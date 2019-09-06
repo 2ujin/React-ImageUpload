@@ -5,7 +5,7 @@ function App() {
   return (
       <div>
         <input type="file" name="file" onChange={null}/>
-        <button type="button" onClick={null}>눌러봐랑</button>
+        <button type="button" onClick={null}>블라블라블라블라</button>
       </div>
   );
 }
