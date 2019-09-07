@@ -15,14 +15,13 @@
 #info{
   float: left;
   width: 600px;
-  height: 400px;
   text-align: center;
   /* border: 1px solid gray; */
-  /* background-color: rgb(247, 247, 247); */
+  /* background-color: rgb(122, 122, 122); */
 }
 #mainContainer{
   width: 600px;
-  height: 400px;
+  height: 700px;
   /* background-color: rgb(247, 247, 247); */
   float: right;
 }
@@ -37,30 +36,30 @@
   height: 408px;
 } */
 #change_div{
-  margin-top: 10px;
+  margin-top: 0px;
   width: 1200;
   height: 90px;
   /* background-color: aqua; */
 }
 #main{
-  background-color: #F9F9F9;
+  background-color: rgb(255, 255, 255);
   width: 1200px;
-  height: 800px;
-  border-radius: 20px 0px 0px 0px;
+  height: 700px;
+  border-radius: 13px 0px 0px 0px;
   box-shadow: 2px 1px 6px 2px rgba(202, 202, 202, 0.637);
 }
 #sticker{
-  width: 200px;
+  width: 300px;
   height: 50px;
   background-color: rgb(247, 247, 247);
   margin-top: 40px;
   float: right;
   text-align: center;
   line-height: 50px;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
 }
 #move_sticker{
-  width: 200px;
+  width: 300px;
   height: 50px;
   background-color: darkgoldenrod;
   margin-top: 40px;
@@ -71,4 +70,40 @@
 }
 #img-box, #gif-box{
   text-align: center;
+}
+#input{
+  width:350px;
+  height: 35px;
+  margin: 7px;
+  border-radius: 10px;
+  border: none;
+  border:solid 1px #ccc;
+}
+table{
+  width: 600px;
+  height: 650px;
+  margin: auto;
+  margin-top: 15px;
+  margin-left: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-family: '나눔스퀘어';
+}
+code{
+  font-size: 12px;
+  font-weight: 400;
+  font-family: '맑은고딕';
+}
+button{
+   border: 1px solid black;
+   /* width: 130px; */
+   height: 30px;
+   border-radius: 80px;
+   background-color: #ffffff;
+   /* color: #FF3B94; */
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+#btn{
+  margin-left: 75px;
 }
