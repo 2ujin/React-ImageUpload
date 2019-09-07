@@ -183,11 +183,12 @@ p{
   width: 300px;
   text-align: center;
   height: 50px;
+  border: none;
   border-radius: 80px;
   background-color: #FF3B94;
   margin-left: 140px;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 7px;
   color: white;
   font-size: 20px;
   font-weight: bold;

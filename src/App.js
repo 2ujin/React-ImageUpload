@@ -21,8 +21,30 @@ export default class App extends React.PureComponent {
     this.appendData = this.appendData.bind(this);
   };
   
-
 appendData=event => {
+  var file_extension = document.getElementById('file').value;
+  file_extension = file_extension.slice(file_extension.indexOf(".") + 1).toLowerCase();
+  var filesize = event.target.files[0];
+
+  var file2 = event.target.files[0];
+  var _URL = window.URL || window.webkitURL;
+  var img = new Image();
+
+  img.src = _URL.createObjectURL(file2);
+
+  img.onload = function() {
+     if(img.width!=408 && img.height!=408){
+       alert("408 * 408 사이즈가 아닙니다!");
+     }
+  }
+  if(file_extension!="png"){
+    alert("png 형식으로 올려주세요!");
+  }
+  else{
+  if(filesize.size>=512000){
+    alert("사진 크기가 너무 큽니다! 500kb 이하인 사진을 올려주세요")
+  }
+  else{
   const file = event.target.files[0];
   const reader = new FileReader();
   const url = reader.readAsDataURL(file);
@@ -32,10 +54,11 @@ appendData=event => {
         imgSrc: [reader.result],
         counter : this.state.counter + 1
     })
+    console.log(reader.result);
   }.bind(this);
-  
-  // console.log(this.state.counter+1); // 첫 값은 undefinded가 나온다 ..
+   // 첫 값은 undefinded가 나온다 ..
   this.displayData.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
+  }}
   }
 click(){
   var color1 = '#ffffff';
@@ -69,12 +92,15 @@ submit(){
 
   }
 }
+cancel_upload(){
+  alert("업로드 창을 닫으시겠습니까? 닫으시면 작성한 내용이 지워집니다.");
+}
   render() {
     return (
       <main className="image-upload">
         <img src="https://studio.stipop.io/static/images/logo-pink.svg" className="title" />
         <img src="https://studio.stipop.io/static/images/tag-studio.png" className="studio"/>
-        <button type="button" id="cancle_upload">업로드 취소 X</button>
+        <button type="button" id="cancle_upload" onClick={()=>this.cancel_upload()}>업로드 취소 X</button>
           <div className="page"> 
             <div id="change_div">
               <div style={{background: this.state.color, boxShadow: '9px -3px 9px -3px rgba(202, 202, 202, 0.637)'}} id="sticker" onClick={()=>this.click()}>움직이는 스티커</div>
@@ -111,10 +137,10 @@ submit(){
                   <td>언어</td>
                   <td><input type="text" id="input" list="language"></input></td>
                   <datalist id="language">
-                    <option value="컴퓨터공학과"></option>
-                    <option value="영어영문과"></option>
-                    <option value="경영학과"></option>
-                    <option value="사회체육과"></option>
+                    <option value="English"></option>
+                    <option value="French"></option>
+                    <option value="Korean"></option>
+                    <option value="Czech"></option>
                   </datalist>
                 </tr>
               </table>
@@ -127,13 +153,13 @@ submit(){
                 <div id ="img-box">
                   <div class="file_input_div">
                     <input type="button" value="업로드!" class="file_input_button" />
-                    <input type="file" id="file" class="file_input_hidden" accept=".png" onChange={this.appendData} />
+                    <input type="file" id="file" class="file_input_hidden" data-width="100" data-height="100" onChange={this.appendData}/>
                   </div>
                 <div id="show_image"> 
                   {this.displayData}
                 </div>
                 </div>
-                <div id="submit" onClick={()=>this.submit()}>제출하기</div>
+                <button id="submit" onClick={()=>this.submit()}>제출하기</button>
             </div>
             :null}
             {this.state.showMe1? // gif 업로드
