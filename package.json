@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jquery": "^3.4.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-dropzone": "^10.1.8",
     "react-images-upload": "^1.2.7",
     "react-images-uploader": "^1.2.0-rc1",
     "react-progress-button": "^5.1.0",

@@ -1,9 +1,8 @@
 .image-upload{
-  width: 1000px;
+  width: 1200px;
   margin: 0 auto; /* 페이지 중앙 정렬 */
   margin-top: 20px;
   border: 1px solid black;
-  height: 2000px;
 }
 .title{
   width: 100px
@@ -14,17 +13,24 @@
   margin-bottom: 9px;
 }
 .page{
- border: 1px solid rebeccapurple;
+ /* background-color:  rebeccapurple; */
 }
-.info{
+#info{
   float: left;
-  width: 300px;
+  width: 598px;
   height: 400px;
-  border: 1px solid salmon;
+  border: 1px solid gray;
+  margin-top: 40px;
 }
-.imageuploader{
-  width: 400px;
+#mainContainer{
+  width: 600px;
   height: 400px;
-  border: 1px solid hotpink;
+  background-color: hotpink;
   float: right;
+  margin-top: 40px;
+}
+#img-box{
+  /* background-color:  hotpink; */
+  width: 408px;
+  height: 408px;
 }
