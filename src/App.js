@@ -33,7 +33,7 @@ appendData=event => {
   }.bind(this);
 
   console.log(this.state.imgSrc); // 첫 값은 undefinded가 나온다 ..
-  this.displayData.push(<div id="display-data"><img src={this.state.imgSrc}></img></div>);
+  this.displayData.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
   }
 click(){
   var color1 = '#ffffff';
@@ -55,16 +55,17 @@ click2(){
     colorr: color1
   })
 }
+see_guide(){
+  window.location.assign('https://studio.stipop.io/howtocreate');
+}
   render() {
- 
-
     return (
       <main className="image-upload">
         <img src="https://studio.stipop.io/static/images/logo-pink.svg" className="title" />
         <img src="https://studio.stipop.io/static/images/tag-studio.png" className="studio"/>
           <div className="page"> 
             <div id="change_div">
-              <div style={{background: this.state.color, boxShadow: '9px -3px 9px -3px rgba(202, 202, 202, 0.637)'}} id="sticker" onClick={()=>this.click()}>움직이는!</div>
+              <div style={{background: this.state.color, boxShadow: '9px -3px 9px -3px rgba(202, 202, 202, 0.637)'}} id="sticker" onClick={()=>this.click()}>움직이는 스티커</div>
               <div style={{background: this.state.colorr, boxShadow: '-3px -3px 9px -3px rgba(202, 202, 202, 0.637)'}} id="move_sticker" onClick={()=>this.click2()}>스티커</div>
             </div>
             <div id = "main">
@@ -108,19 +109,27 @@ click2(){
             </div>
             {this.state.showMe? // 사진 업로드 
               <div id="mainContainer">
-                <div id="img-box">
-                  그냥 사진사진사진 업로드 <br></br>
-                  <input ref="file" type="file" className="button" onChange={this.appendData}/>
+                <h4>파일</h4><button type="button" id="create" onClick={()=>this.see_guide()}>창작 가이드 보기</button><br></br>
+                <p>PNG, 500kb 이하 408 x 408 px, 최소 5개 최대 30개 스티커</p>
+                <p id="p2">메인 스티커는 스티커를 모두 업로드 한 후에 메인 스티커 칸으로 드래그 해주세요.</p>
+                <div id ="img-box">
+                  <div class="file_input_div">
+                    <input type="button" value="업로드!" class="file_input_button" />
+                    <input type="file" id="file" class="file_input_hidden" accept=".png" onChange={this.appendData} />
+                  </div>
                 <div id="show_image"> 
                   {this.displayData}
                 </div>
                 </div>
+                <div id="submit">제출하기</div>
             </div>
             :null}
             {this.state.showMe1? // gif 업로드
-              <div id="mainContainer2"> 
+              <div id="mainContainer2">
+                <h4>파일</h4><button type="button" id="create" onClick={()=>this.see_guide()}>창작 가이드 보기</button><br></br>
+                <p>움직이는 스티커: GIF, 500kb 이하, 408 x 408 px</p>
+                <p id="p2">메인 스티커는 스티커를 모두 업로드 한 후에 메인 스티커 칸으로 드래그 해주세요.</p> 
               <div id="gif-box">
-              여긴 움짤 업로드드드 <br></br>
                   <input ref="file" type="file" className="button" onChange={this.appendData}/>
                 <div id="show_image"> 
                   {this.displayData2}

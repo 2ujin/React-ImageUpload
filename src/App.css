@@ -1,3 +1,4 @@
+*:focus { outline:none; }
 .image-upload{
   width: 1200px;
   margin: 0 auto; /* 페이지 중앙 정렬 */
@@ -12,6 +13,9 @@
   margin-left: 9px;
   margin-bottom: 9px;
 }
+#file{
+  background-color: #FF3B94;
+}
 #info{
   float: left;
   width: 600px;
@@ -22,19 +26,13 @@
 #mainContainer{
   width: 600px;
   height: 700px;
-  /* background-color: rgb(247, 247, 247); */
   float: right;
 }
 #mainContainer2{
   width: 600px;
   height: 400px;
   float: right;
-  /* background-color: rgb(247, 247, 247); */
 }
-/* #show_image{
-  width: 408px;
-  height: 408px;
-} */
 #change_div{
   margin-top: 0px;
   width: 1200;
@@ -48,10 +46,13 @@
   border-radius: 13px 0px 0px 0px;
   box-shadow: 2px 1px 6px 2px rgba(202, 202, 202, 0.637);
 }
+#sticker, #move_sticker{
+  font-family: '나눔스퀘어';
+  font-weight: bold;
+}
 #sticker{
   width: 300px;
   height: 50px;
-  background-color: rgb(247, 247, 247);
   margin-top: 40px;
   float: right;
   text-align: center;
@@ -61,14 +62,24 @@
 #move_sticker{
   width: 300px;
   height: 50px;
-  background-color: darkgoldenrod;
   margin-top: 40px;
   float: right;
   text-align: center;
   line-height: 50px;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
 }
 #img-box, #gif-box{
+  text-align: center;
+  width: 550px;
+  height: 445px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  border: 0.5px solid #afafaf;
+}
+#show_image{
+  width: 550px;
+  height: 425px;
+  /* background-color: yellow; */
   text-align: center;
 }
 #input{
@@ -78,6 +89,10 @@
   border-radius: 10px;
   border: none;
   border:solid 1px #ccc;
+}
+#input:focus{
+  /* outline: 2px solid #FF3B94; */
+  box-shadow: 0 0 1.5px 1.5px #FF3B94;
 }
 table{
   width: 600px;
@@ -96,14 +111,103 @@ code{
 }
 button{
    border: 1px solid black;
-   /* width: 130px; */
    height: 30px;
    border-radius: 80px;
    background-color: #ffffff;
-   /* color: #FF3B94; */
-  margin-right: 5px;
-  margin-bottom: 10px;
+   margin-right: 5px;
+   margin-bottom: 10px;
+}
+button:hover{
+  background-color: #e9e6e6a2;
+}
+button:active{
+  color: #FF3B94;
+  border: 1px solid #FF3B94;
+}
+button:focus{
+  color: #FF3B94;
+  border: 1px solid #FF3B94;
 }
 #btn{
   margin-left: 75px;
+}
+h4{
+  margin-top: 30px;
+  font-family: '나눔스퀘어';
+  margin-right: 30px;
+  float: left;
+}
+#create{
+  margin-top: 25px;
+  font-family: '나눔스퀘어';
+  margin-bottom: 0px;
+}
+p{
+  font-family: '나눔스퀘어';
+  font-size: 15px;
+  color: #2b2b2b;
+  /* margin-top: px; */
+}
+#p2{
+  color: #FF3B94;
+  font-family: '나눔스퀘어';
+}
+#image{
+  margin-left: 28px;
+  margin-top: 20px;
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+#submit{
+  width: 300px;
+  text-align: center;
+  height: 50px;
+  border-radius: 80px;
+  background-color: #FF3B94;
+  margin-left: 140px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 50px;
+  font-family: '나눔스퀘어';
+}
+.file_input_div
+{
+margin-top: 5px;
+margin-left: 160px;
+position: relative;
+width: 140px;
+height: 30px;
+overflow: hidden;
+}
+
+.file_input_button
+{
+width: 140px;
+position: absolute;
+top: 0px;
+text-align: left;
+margin-left: 10px;
+background-color: #FF3B94;
+color: #FFFFFF;
+font-family: '나눔스퀘어';
+font-size: 15px;
+border: none;
+}
+
+.file_input_hidden
+{
+font-size: 45px;
+position: absolute;
+right: 0px;
+top: 0px;
+opacity: 0;
+
+filter: alpha(opacity=0);
+-ms-filter: "alpha(opacity=0)";
+-khtml-opacity: 0;
+-moz-opacity: 0;
 }
