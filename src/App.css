@@ -1,17 +1,26 @@
-*:focus { outline:none; }
+/* 클릭시 테두리 나오는거 없애주기 */
+*:focus { 
+  outline:none; 
+}
+/* 드래그 시 색상변경 */
+::selection {
+  background-color: rgb(255, 203, 226);
+}
 .image-upload{
   width: 1200px;
   margin: 0 auto; /* 페이지 중앙 정렬 */
   margin-top: 20px;
-  /* border: 1px solid black; */
 }
 .title{
-  width: 150px
+  width: 150px;
+  float: left;
 }
 .studio{
   width:60px;
   margin-left: 9px;
+  margin-top: 12px;
   margin-bottom: 9px;
+  float: left;
 }
 #file{
   background-color: #FF3B94;
@@ -22,6 +31,16 @@
   text-align: center;
   /* border: 1px solid gray; */
   /* background-color: rgb(122, 122, 122); */
+}
+#cancle_upload{
+  width: 150px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #FF3B94;
+  color: #FF3B94;
+  margin-left: 820px;
+  margin-top: 7px;
+  font-family: '나눔스퀘어';
 }
 #mainContainer{
   width: 600px;
@@ -81,6 +100,7 @@
   height: 425px;
   /* background-color: yellow; */
   text-align: center;
+  overflow: hidden;
 }
 #input{
   width:350px;

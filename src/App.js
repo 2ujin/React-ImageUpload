@@ -15,7 +15,8 @@ export default class App extends React.PureComponent {
       showMe : true,
       showMe1 : false,
       color: color2,
-      colorr : color1
+      colorr : color1,
+      counter : 0
     }
     this.appendData = this.appendData.bind(this);
   };
@@ -28,11 +29,12 @@ appendData=event => {
 
   reader.onload = function (e) {
     this.setState({
-        imgSrc: [reader.result]
+        imgSrc: [reader.result],
+        counter : this.state.counter + 1
     })
   }.bind(this);
-
-  console.log(this.state.imgSrc); // 첫 값은 undefinded가 나온다 ..
+  
+  // console.log(this.state.counter+1); // 첫 값은 undefinded가 나온다 ..
   this.displayData.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
   }
 click(){
@@ -58,11 +60,21 @@ click2(){
 see_guide(){
   window.location.assign('https://studio.stipop.io/howtocreate');
 }
+submit(){
+  if(this.state.counter+1 < 5){
+    alert("최소 5개 선택해주세요!");
+  }
+  if(this.state.counter+1 > 30){
+    alert("등록 숫자를 넘어섰습니다!");
+
+  }
+}
   render() {
     return (
       <main className="image-upload">
         <img src="https://studio.stipop.io/static/images/logo-pink.svg" className="title" />
         <img src="https://studio.stipop.io/static/images/tag-studio.png" className="studio"/>
+        <button type="button" id="cancle_upload">업로드 취소 X</button>
           <div className="page"> 
             <div id="change_div">
               <div style={{background: this.state.color, boxShadow: '9px -3px 9px -3px rgba(202, 202, 202, 0.637)'}} id="sticker" onClick={()=>this.click()}>움직이는 스티커</div>
@@ -121,7 +133,7 @@ see_guide(){
                   {this.displayData}
                 </div>
                 </div>
-                <div id="submit">제출하기</div>
+                <div id="submit" onClick={()=>this.submit()}>제출하기</div>
             </div>
             :null}
             {this.state.showMe1? // gif 업로드
