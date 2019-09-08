@@ -12,8 +12,9 @@ export default class App extends React.PureComponent {
     this.displayData_gif = [];
     
     this.state = {
-      showdata : this.displayData_img,
+      showdata : this.displayData_img,  
       showdata2 : this.displayData_gif,
+      width: 0,
       postVal : "",
       showMe : true,
       showMe1 : false,
@@ -27,84 +28,74 @@ export default class App extends React.PureComponent {
 appendData=event => {
   var file_extension = document.getElementById('file').value;
   file_extension = file_extension.slice(file_extension.indexOf(".") + 1).toLowerCase();
-  var filesize = event.target.files[0];
 
-  var file2 = event.target.files[0];
   var _URL = window.URL || window.webkitURL;
   var img = new Image();
 
-  img.src = _URL.createObjectURL(file2);
-
-  img.onload = function() {
-     if(img.width!=408 && img.height!=408){
-       alert("408 * 408 사이즈가 아닙니다!");
-     }
-  }
-  if(file_extension!="png"){
-    alert("png 형식으로 올려주세요!");
-  }
-  else{
-  if(filesize.size>=512000){
-    alert("사진 크기가 너무 큽니다! 500kb 이하인 사진을 올려주세요")
-  }
-  else{
   const file = event.target.files[0];
   const reader = new FileReader();
   const url = reader.readAsDataURL(file);
-
-  reader.onload = function (e) {
-    this.setState({
-        imgSrc: [reader.result],
-        counter : this.state.counter + 1
-    })
-    console.log(reader.result);
-  }.bind(this);
-   // 첫 값은 undefinded가 나온다 ..
-  this.displayData_img.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
-  this.displayData_gif.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
   
-  }}
+  img.src = _URL.createObjectURL(file);
+
+  if(file_extension!='png'){
+    alert("png 형식으로 올려주세요!");
+  }
+  if(file.size>=512000){
+    alert("용량이 너무 큽니다!");
+  }
+  if(file_extension=='png' && file.size<=512000){
+    reader.onload = function (e) {
+      this.setState({
+        imgSrc: [reader.result],
+        counter : this.state.counter + 1,
+    })
+    }.bind(this);
+    if(this.state.imgSrc!=undefined)
+    this.displayData_img.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
+    img.onload = function(e) {
+      if(img.width!=408 && img.height!=408){ //사이즈가 아닐때 안 올라가게 해야지..
+        alert("408 * 408 사이즈가 아닙니다!");
+      }
+    }
+    }
   }
   appendData_gif=event => {
     var file_extension = document.getElementById('file').value;
     file_extension = file_extension.slice(file_extension.indexOf(".") + 1).toLowerCase();
-    var filesize = event.target.files[0];
   
-    var file2 = event.target.files[0];
     var _URL = window.URL || window.webkitURL;
     var img = new Image();
   
-    img.src = _URL.createObjectURL(file2);
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    const url = reader.readAsDataURL(file);
+    
+    img.src = _URL.createObjectURL(file);
   
-    img.onload = function() {
-       if(img.width!=408 && img.height!=408){
-         alert("408 * 408 사이즈가 아닙니다!");
-       }else{
-        if(file_extension!="gif"){
-          alert("gif 형식으로 올려주세요!");
-        }
-        else{
-        if(filesize.size>=512000){
-          alert("사진 크기가 너무 큽니다! 500kb 이하인 사진을 올려주세요")
-        }
-        else{
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        const url = reader.readAsDataURL(file);
-        // console.log(reader.result);
-        reader.onload = function (e) {
-          this.setState({
-              imgSrc: [reader.result],
-              counter : this.state.counter + 1
-          })
-        }.bind(this);
-         // 첫 값은 undefinded가 나온다 ..
-        this.displayData_img.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
-       }
+    if(file_extension!='gif'){
+      alert("gif 형식으로 올려주세요!");
     }
-    // this.displayData_gif.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
-    }}
+    if(file.size>=512000){
+      alert("용량이 너무 큽니다!");
     }
+    if(file_extension=='gif' && file.size<=512000){
+      reader.onload = function (e) {
+        this.setState({
+          imgSrc: [reader.result],
+          counter : this.state.counter + 1,
+      })
+      }.bind(this);
+      if(this.state.imgSrc!=undefined)
+      this.displayData_gif.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
+      img.onload = function(e) {
+        if(img.width!=408 && img.height!=408){ //사이즈가 아닐때 안 올라가게 해야지..
+          alert("408 * 408 사이즈가 아닙니다!");
+        }
+      }
+      }
+    }
+
 click(){ //스티커
   var color1 = '#ffffff';
   var color2 = '#f2f2f2';
@@ -125,6 +116,7 @@ click2(){ //움직이는 스티커
     colorr: color1
   })
 }
+
 see_guide(){ //작성 가이드 이동
   window.location.assign('https://studio.stipop.io/howtocreate');
 }
@@ -193,7 +185,7 @@ cancel_upload(){ // 업로드 취소 버튼
                 </tr>
               </table>
             </div>
-            {this.state.showMe? // 사진 업로드 
+            {this.state.showMe? // png 업로드 
               <div id="UploadSticker">
                 <h4>파일</h4><button type="button" id="create" onClick={()=>this.see_guide()}>창작 가이드 보기</button><br></br>
                 <p>PNG, 500kb 이하 408 x 408 px, 최소 5개 최대 30개 스티커</p>
@@ -218,11 +210,16 @@ cancel_upload(){ // 업로드 취소 버튼
                 <p>움직이는 스티커: GIF, 500kb 이하, 408 x 408 px</p>
                 <p id="p2">메인 스티커는 스티커를 모두 업로드 한 후에 메인 스티커 칸으로 드래그 해주세요.</p> 
                 <div id="gif-box">
-                  <input ref="file" type="file" id="file" className="button" onChange={this.appendData_gif}/>
+                  {/* 파일 업로드 */}
+                  <div class="file_input_div">
+                    <input type="button" value="업로드!" class="file_input_button" /> 
+                    <input type="file" id="file" class="file_input_hidden" onChange={this.appendData_gif}/>
+                  </div>
                 <div id="show_image"> 
                   {this.displayData_gif}
                 </div>
                 </div>
+                <button id="submit" onClick={()=>this.submit()}>제출하기</button>
               </div>
             :null}
           </div> 
