@@ -42,12 +42,12 @@
   margin-top: 7px;
   font-family: '나눔스퀘어';
 }
-#mainContainer{
+#UploadSticker{
   width: 600px;
   height: 700px;
   float: right;
 }
-#mainContainer2{
+#UploadGif{
   width: 600px;
   height: 400px;
   float: right;
@@ -109,6 +109,7 @@
   border-radius: 10px;
   border: none;
   border:solid 1px #ccc;
+  font-family: '나눔스퀘어';
 }
 #input:focus{
   /* outline: 2px solid #FF3B94; */
