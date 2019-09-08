@@ -1,7 +1,13 @@
 ## 리액트로 이미지 업로드 사이트 만들기 📷
-LINK🌞 https://2ujin.github.io/React-ImageUpload/
+LINK https://2ujin.github.io/React-ImageUpload/
 
-## 기능 🌠
+## 기능
+* 기본적인 이미지(png)와 움직이는 이미지(gif)를 따로 업로드 한다
+* PNG(gif), 500kb 이하 408 x 408 px인 이미지만 업로드 할 수 있다
+* 5개 이상 30개 미만의 이미지가 업로드 된다
+* 문제점 : 업로드 한 이미지가 하나씩 밀린다 (..고치는중...)
+
+## 개발일지 🌠
 간단한 실행화면과 개발일지
 - 스타일 주기 1
 ![실행화면](https://user-images.githubusercontent.com/42020919/64473126-66bac700-d1a0-11e9-8820-0ee1035ad631.png)  <br>
