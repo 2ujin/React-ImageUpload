@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
-
 export default class App extends React.PureComponent {
-  
   constructor() {
     super();
     var color1 = '#ffffff';
@@ -23,41 +21,49 @@ export default class App extends React.PureComponent {
       counter : 0
     }
     this.appendData = this.appendData.bind(this);
+    this.appendData_gif = this.appendData.bind(this);
+    
   };
+  hi = event=> {
+    const file = event.target.files[0];
   
-appendData=event => {
+    var _URL = window.URL || window.webkitURL;
+    var img = new Image();
+    img.src = _URL.createObjectURL(file);
+  }
+  appendData = async event => {
   var file_extension = document.getElementById('file').value;
   file_extension = file_extension.slice(file_extension.indexOf(".") + 1).toLowerCase();
 
   var _URL = window.URL || window.webkitURL;
   var img = new Image();
 
-  const file = event.target.files[0];
-  const reader = new FileReader();
+  const file = await event.target.files[0];
+  const reader = await new FileReader();
   const url = reader.readAsDataURL(file);
+  img.src = await _URL.createObjectURL(file);
   
-  img.src = _URL.createObjectURL(file);
-
   if(file_extension!='png'){
     alert("png 형식으로 올려주세요!");
   }
   if(file.size>=512000){
     alert("용량이 너무 큽니다!");
   }
+  img.onload = function(e) {
+    if(img.width!=408 && img.height!=408){ //사이즈가 아닐때 안 올라가게 해야지..
+      alert("408 * 408 사이즈가 아닙니다!");
+      return;
+    }
+  }
   if(file_extension=='png' && file.size<=512000){
-    reader.onload = function (e) {
+    reader.onload = await function (e) {
       this.setState({
         imgSrc: [reader.result],
         counter : this.state.counter + 1,
     })
     }.bind(this);
     if(this.state.imgSrc!=undefined)
-    this.displayData_img.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
-    img.onload = function(e) {
-      if(img.width!=408 && img.height!=408){ //사이즈가 아닐때 안 올라가게 해야지..
-        alert("408 * 408 사이즈가 아닙니다!");
-      }
-    }
+    this.displayData_img.push(<img src={this.state.imgSrc} id="image" onClick={()=>this.delete()}></img>);
     }
   }
   appendData_gif=event => {
@@ -133,6 +139,10 @@ submit(){ // 제출 버튼
 
 cancel_upload(){ // 업로드 취소 버튼
   alert("업로드 창을 닫으시겠습니까? 닫으시면 작성한 내용이 지워집니다.");
+}
+delete(){
+  // alert("gd");
+  this.displayData_img.shift();
 }
   render() {
     return (
