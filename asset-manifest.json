@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/React-ImageUpload/static/css/main.cbd535a9.chunk.css",
-    "main.js": "/React-ImageUpload/static/js/main.3005dba5.chunk.js",
-    "main.js.map": "/React-ImageUpload/static/js/main.3005dba5.chunk.js.map",
+    "main.css": "/React-ImageUpload/static/css/main.41a2b19d.chunk.css",
+    "main.js": "/React-ImageUpload/static/js/main.d8d13189.chunk.js",
+    "main.js.map": "/React-ImageUpload/static/js/main.d8d13189.chunk.js.map",
     "runtime~main.js": "/React-ImageUpload/static/js/runtime~main.97013b8d.js",
     "runtime~main.js.map": "/React-ImageUpload/static/js/runtime~main.97013b8d.js.map",
     "static/js/2.084ff063.chunk.js": "/React-ImageUpload/static/js/2.084ff063.chunk.js",
     "static/js/2.084ff063.chunk.js.map": "/React-ImageUpload/static/js/2.084ff063.chunk.js.map",
     "index.html": "/React-ImageUpload/index.html",
-    "precache-manifest.926f5c6705fead2eda07f0a24c1d572f.js": "/React-ImageUpload/precache-manifest.926f5c6705fead2eda07f0a24c1d572f.js",
+    "precache-manifest.7ffed63087e0582db833bd4fabe58e92.js": "/React-ImageUpload/precache-manifest.7ffed63087e0582db833bd4fabe58e92.js",
     "service-worker.js": "/React-ImageUpload/service-worker.js",
-    "static/css/main.cbd535a9.chunk.css.map": "/React-ImageUpload/static/css/main.cbd535a9.chunk.css.map"
+    "static/css/main.41a2b19d.chunk.css.map": "/React-ImageUpload/static/css/main.41a2b19d.chunk.css.map"
   }
 }
