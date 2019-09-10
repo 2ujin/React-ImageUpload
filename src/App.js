@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { callbackify } from 'util';
 export default class App extends React.PureComponent {
 
   constructor() {
@@ -24,55 +23,21 @@ export default class App extends React.PureComponent {
       file : "",
     }
     this.appendData = this.appendData.bind(this);
-    this.appendData_gif = this.appendData.bind(this);
+    this.appendData_gif = this.appendData_gif.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange_gif = this.handleChange_gif.bind(this);
+    
   };
-
 
   appendData(){
     if(this.state.postVal!=""){
       this.displayData_img.push(<div id="display-data"><img src={this.state.postVal} id="image"></img></div>);
     }
-    
-    
     this.setState({
        showdata : this.displayData,
+      //  showdata2 : this.displayData_gif,
        postVal : ""
     });
-  // var file_extension = document.getElementById('file').value;
-  // file_extension = file_extension.slice(file_extension.indexOf(".") + 1).toLowerCase();
-
-  // var _URL = window.URL || window.webkitURL;
-  // var img = new Image();
-
-  // const file =  event.target.files[0];
-  // const reader =  new FileReader();
-  // const url = reader.readAsDataURL(file);
-  // img.src = await _URL.createObjectURL(file);
-  
-  // if(file_extension!='png'){
-  //   alert("png 형식으로 올려주세요!");
-  // }
-  // if(file.size>=512000){
-  //   alert("용량이 너무 큽니다!");
-  // }
-  // img.onload = function(e) {
-  //   if(img.width!=408 && img.height!=408){ //사이즈가 아닐때 안 올라가게 해야지..
-  //     alert("408 * 408 사이즈가 아닙니다!");
-  //     return;
-  //   }
-  // }
-  // if(file_extension=='png' && file.size<=512000){
-    // reader.onload = function (e) {
-    //   this.setState({
-    //     imgSrc: [reader.result],
-    //     counter : this.state.counter + 1,
-    // })
-    // }.bind(this);
-    // // if(this.state.imgSrc!=undefined)
-    // this.displayData_img.push(<img src={this.state.imgSrc} id="image" onClick={()=>this.delete()}></img>);
-    // }
-
   }
 
   handleChange(e) { // 파일 업로드시 저장
@@ -83,7 +48,6 @@ export default class App extends React.PureComponent {
     const file = e.target.files[0];
     const reader = new FileReader();
     const url = reader.readAsDataURL(file);
-    console.log(file);
 
     const width = 0;
     var _URL = window.URL || window.webkitURL;
@@ -123,42 +87,62 @@ export default class App extends React.PureComponent {
     }.bind(this); 
   }
 
-  appendData_gif=event => {
+  appendData_gif() {
+    alert('gdgd');
+    if(this.state.postVal!=""){
+      this.displayData_gif.push(<div id="display-data"><img src={this.state.postVal} id="image"></img></div>);
+    }
+    this.setState({
+       showdata2 : this.displayData_gif,
+       postVal : ""
+    });
+  }
+
+  handleChange_gif(e) { // 파일 업로드시 저장
+    alert("gdgd");
+    var style = document.getElementById('meme');
     var file_extension = document.getElementById('file').value;
-    
     file_extension = file_extension.slice(file_extension.indexOf(".") + 1).toLowerCase();
-  
-    var _URL = window.URL || window.webkitURL;
-    var img = new Image();
-  
-    const file = event.target.files[0];
+
+    const file = e.target.files[0];
     const reader = new FileReader();
     const url = reader.readAsDataURL(file);
-    
+
+    var _URL = window.URL || window.webkitURL;
+    var img = new Image();
+
     img.src = _URL.createObjectURL(file);
-  
-    if(file_extension!='gif'){
-      alert("gif 형식으로 올려주세요!");
-    }
-    if(file.size>=512000){
-      alert("용량이 너무 큽니다!");
-    }
-    if(file_extension=='gif' && file.size<=512000){
-      reader.onload = function (e) {
-        this.setState({
-          imgSrc: [reader.result],
-          counter : this.state.counter + 1,
-      })
-      }.bind(this);
-      if(this.state.imgSrc!=undefined)
-      this.displayData_gif.push(<div id="display-data"><img src={this.state.imgSrc} id="image"></img></div>);
-      img.onload = function(e) {
-        if(img.width!=408 && img.height!=408){ //사이즈가 아닐때 안 올라가게 해야지..
-          alert("408 * 408 사이즈가 아닙니다!");
-        }
+
+    reader.onload = function(e){  
+     this.setState({
+       postVal :reader.result,
+       file : file,
+     }); 
+     img.onload = function(e) {
+      const width = this.width;
+      const height = this.height;
+
+      if(width==408 && height==408 && file_extension=='gif' && file.size<=512000){
+        style.style.visibility = "visible";
       }
+      else if(file_extension!='gif'){
+        alert('gif 파일만 가능합니다!');
+        style.style.visibility = "hidden";
+      }
+      else if(file.size>=512000){
+        alert('용량이 너무 큽니다 ㅠㅠ');
+        style.style.visibility = "hidden";
+      }
+      else if(width!=408 && height!=408){
+        alert('408px * 408px 사이즈만 가능합니다!');
+        style.style.visibility = "hidden";
+      }
+      else{
+        style.style.visibility = "hidden";
       }
     }
+    }.bind(this); 
+  }
 
 click(){ //스티커
   var color1 = '#ffffff';
@@ -277,10 +261,8 @@ cancel_upload(){ // 업로드 취소 버튼
                 <p id="p2">메인 스티커는 스티커를 모두 업로드 한 후에 메인 스티커 칸으로 드래그 해주세요.</p> 
                 <div id="gif-box">
                   {/* 파일 업로드 */}
-                  <div class="file_input_div">
-                    <input type="button" value="업로드!" class="file_input_button" /> 
-                    <input type="file" id="file" class="file_input_hidden" onChange={this.appendData_gif}/>
-                  </div>
+                  <input type="file" id="file" onChange={this.handleChange_gif}></input><br></br>
+                  <input type="submit" id="meme" className="button" onClick={this.appendData_gif} value="버튼"/>
                 <div id="show_image"> 
                   {this.displayData_gif}
                 </div>
