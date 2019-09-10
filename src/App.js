@@ -240,13 +240,8 @@ cancel_upload(){ // 업로드 취소 버튼
                 <p id="p2">메인 스티커는 스티커를 모두 업로드 한 후에 메인 스티커 칸으로 드래그 해주세요.</p>
                 <div id ="img-box">
                   {/* 파일 업로드 */}
-                  <input type="file" id="file" onChange={this.handleChange}></input><br></br>
-                  <input type="submit" id="meme" className="button" onClick={this.appendData} value="버튼"/>
-                  {/* <div class="file_input_div">
-                    <input type="button" value="업로드!" class="file_input_button" /> 
-                    <input type="file" id="file" class="file_input_hidden" onChange={this.appendData}/>
-                  </div> */}
-                  {/* 업로드 한 이미지 */}
+                  <input type="file" id="file" onChange={this.handleChange}></input><br></br>                  
+                  <input type="submit" id="meme" onClick={this.appendData} value="클릭"/>
                 <div id="show_image"> 
                   {this.displayData_img}
                 </div>
@@ -262,10 +257,10 @@ cancel_upload(){ // 업로드 취소 버튼
                 <div id="gif-box">
                   {/* 파일 업로드 */}
                   <input type="file" id="file" onChange={this.handleChange_gif}></input><br></br>
-                  <input type="submit" id="meme" className="button" onClick={this.appendData_gif} value="버튼"/>
+                  <input type="submit" id="meme" className="button" onClick={this.appendData_gif} value="클릭"/>
                 <div id="show_image"> 
                   {this.displayData_gif}
-                </div>
+                </div>  
                 </div>
                 <button id="submit" onClick={()=>this.submit()}>제출하기</button>
               </div>
