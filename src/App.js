@@ -49,11 +49,14 @@ export default class App extends React.PureComponent {
     const reader = new FileReader();
     const url = reader.readAsDataURL(file);
 
-    const width = 0;
     var _URL = window.URL || window.webkitURL;
     var img = new Image();
 
     img.src = _URL.createObjectURL(file);
+
+    for(var i = 0; i < this.displayData_img.length-1; i++){
+
+    }
 
     reader.onload = function(e){  
      this.setState({
@@ -64,7 +67,7 @@ export default class App extends React.PureComponent {
      img.onload = function(e) {
       const width = this.width;
       const height = this.height;
-
+      
       if(width==408 && height==408 && file_extension=='png' && file.size<=512000){
         style.style.visibility = "visible";
       }
@@ -88,7 +91,6 @@ export default class App extends React.PureComponent {
   }
 
   appendData_gif() {
-    alert('gdgd');
     if(this.state.postVal!=""){
       this.displayData_gif.push(<div id="display-data"><img src={this.state.postVal} id="image"></img></div>);
     }
@@ -99,7 +101,6 @@ export default class App extends React.PureComponent {
   }
 
   handleChange_gif(e) { // 파일 업로드시 저장
-    alert("gdgd");
     var style = document.getElementById('meme');
     var file_extension = document.getElementById('file').value;
     file_extension = file_extension.slice(file_extension.indexOf(".") + 1).toLowerCase();
