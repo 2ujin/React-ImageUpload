@@ -1,5 +1,4 @@
 ## 리액트로 이미지 업로드 사이트 만들기 📷
-LINK https://2ujin.github.io/React-ImageUpload/
 
 ## 기능
 * 기본적인 이미지(png)와 움직이는 이미지(gif)를 따로 업로드 한다
