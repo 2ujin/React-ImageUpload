@@ -54,16 +54,13 @@ export default class App extends React.PureComponent {
 
     img.src = _URL.createObjectURL(file);
 
-    for(var i = 0; i < this.displayData_img.length-1; i++){
-
-    }
-
     reader.onload = function(e){  
      this.setState({
        postVal :reader.result,
        file : file,
        width : img.width,
      }); 
+     console.log(this.state.postVal);
      img.onload = function(e) {
       const width = this.width;
       const height = this.height;
@@ -119,6 +116,7 @@ export default class App extends React.PureComponent {
        postVal :reader.result,
        file : file,
      }); 
+     
      img.onload = function(e) {
       const width = this.width;
       const height = this.height;
@@ -186,7 +184,7 @@ cancel_upload(){ // 업로드 취소 버튼
   render() {
     return (
       <main className="image-upload">
-        <img src="https://studio.stipop.io/static/images/logo-pink.svg" className="title" />
+         <img src="https://studio.stipop.io/static/images/logo-pink.svg" className="title" />
         <img src="https://studio.stipop.io/static/images/tag-studio.png" className="studio"/>
         <button type="button" id="cancle_upload" onClick={()=>this.cancel_upload()}>업로드 취소 X</button>
           <div className="page"> 
